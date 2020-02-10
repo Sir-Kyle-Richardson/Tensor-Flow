@@ -1,11 +1,40 @@
-import tensorflow as tf             # library for numerical computing created by Google, e.g. to create deep learning models
-print("Tensor Flow " + tf.__version__)
+# IMPORT OF LIBRARIES
+try:
+    import tensorflow as tf             # library for numerical computing created by Google, e.g. to create deep learning models
+    print("Tensor Flow " + tf.__version__)
+except:
+    lib_1 = 'Tensor Flow'
+    print('Program requires ' + lib_1 + ' python module to be installed')
+    print('Recommended' + lib_1 + '2.0.0')
+    exit(1)
+
 from tensorflow import keras        # open-source neural-network library, set of images
-import numpy as np                  # adding support for large, multi-dimensional arrays and matrices
-print("Numpy " + np.__version__)
-import matplotlib.pyplot as plt     # Python 2D plotting library
-from PIL import Image               # Python Imaging Library
-print("PIL " + Image.__version__)
+
+try:
+    import numpy as np                  # adding support for large, multi-dimensional arrays and matrices
+    print("Numpy " + np.__version__)
+except:
+    lib_2 = 'Numpy'
+    print('Program requires ' + lib_2 + ' python module to be installed')
+    print('Recommended' + lib_2 + '1.17.4')
+    exit(1)
+
+try:
+    import matplotlib.pyplot as plt     # Python 2D plotting library
+except:
+    lib_3 = 'Matplotlib'
+    print('Program requires ' + lib_3 + ' python module to be installed')
+    exit(1)
+
+try:
+    from PIL import Image  # Python Imaging Library
+    print("PIL " + Image.__version__)
+except:
+    lib_4 = 'PIL'
+    print('Program requires ' + lib_4 + ' python module to be installed')
+    print('Recommended' + lib_4 + '6.2.1')
+    exit(1)
+
 import os                           # to change path os.chdir('...')
 
 
