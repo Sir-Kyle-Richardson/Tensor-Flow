@@ -37,6 +37,7 @@ except:
 
 import os                           # to change path os.chdir('...')
 
+main_folder = os.getcwd()           # path to main folder with image.py
 
 model = tf.keras.models.load_model('my_model.h5')   # loading the trained model
 fashion_mnist = keras.datasets.fashion_mnist        # training and test dataset
@@ -71,7 +72,7 @@ def prediction_imag(img, name):                 # prediction for one image, imag
     plt.ylabel('Probability(items)')
     plt.xlabel('items')
     plt.grid()
-    os.chdir('F:/Mente/tensor_flow/results')
+    os.chdir(main_folder + '/results')
     fig.savefig(str(name))
     plt.close(fig)
     tmp = np.argmax(Y)
@@ -79,7 +80,7 @@ def prediction_imag(img, name):                 # prediction for one image, imag
 
 
 def plot_matrix(img, name):     # save the resize image
-    os.chdir('F:/Mente/tensor_flow/28x28')
+    os.chdir(main_folder + '/28x28')
     fig = plt.figure()
     plt.imshow(img, cmap=plt.cm.binary)
     plt.colorbar()
@@ -132,7 +133,7 @@ if mode == 2:
 
 ii = 0
 state = True
-os.chdir('F:/Mente/tensor_flow/results')  # path to the results
+os.chdir(main_folder + '/results')  # path to the results
 f = open("results.dat", "w+")
 
 while state:
@@ -140,7 +141,7 @@ while state:
     if mode == 0:
         break
     if mode == 1:
-        name = input("Give a name of file to retrain the program or 0, if exit: ")
+        name = input("Give a name of file or 0, if exit: ")
         if name == '0':
             break
     if mode == 2:
@@ -150,7 +151,7 @@ while state:
         name = 'picture_' + str(ii) + '.png'
         print(name)
     if mode == 3:
-        name = input("Give a name of file or 0, if exit: ")
+        name = input("Give a name of file to retrain the program or 0, if exit: ")
         if name == '0':
             break
     if mode == 4:   # LOAD ORIGINAL DATA TEST
@@ -163,10 +164,10 @@ while state:
         model = build_model()
         compile_model()
         train_model()
-        os.chdir('F:/Mente/tensor_flow')
+        os.chdir(main_folder)
         model.save('my_model.h5')  # save new model
         break
-    os.chdir('F:/Mente/tensor_flow/pictures')     # path to the images
+    os.chdir(main_folder + '/pictures')     # path to the images
     img = Image.open(name)
 
     if img.size[0] != img.size[1]:      # Does the photo have N x X pixels ?
@@ -215,6 +216,6 @@ while state:
             model = build_model()
             compile_model()
             train_model()
-            os.chdir('F:/Mente/tensor_flow')
+            os.chdir(main_folder)
             model.save('my_model.h5')  # save new model
 f.close()
