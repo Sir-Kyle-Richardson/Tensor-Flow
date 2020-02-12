@@ -46,7 +46,7 @@ parser.add_argument('-n', '--number', type=int,
                     help='number of pictures named \'picture_i.png\' for series mode')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('-ns', '--not_save', action='store_true',
-                   help='not save prediction images to file, e.g. in case of many pictures')
+                   help='not save prediction images to file, e.g. in case of a lot of pictures')
 args = parser.parse_args()      # PARSE
 
 # GLOBAL VARIABLES
@@ -210,7 +210,7 @@ while state:
     except:
         print('Wrong file name')
         exit(1)
-        
+
     if img.size[0] != img.size[1]:                                       # Does the photo have N x X pixels ?
         x = img.size[0]                                                  # pixels number of image from OX
         y = img.size[1]                                                  # pixels number of image from OY
@@ -246,10 +246,15 @@ while state:
         choice = input('Enter \'yes\' or anything else if no: ')
         if choice == 'yes':
             print(items)
-            number = input("Put \'0,1...9\' to point right class: ")
+            while True:
+                try:
+                    tmp2 = input("Put \'0,1...9\' to point right class: ")
+                    tmp2 = int(tmp2)
+                    break
+                except:
+                    print('Number of item is not a \'int\' type')
             tmp1 = np.ones((1, shape, shape))
             tmp1[0] = img
-            tmp2 = int(number)
             train_images = np.concatenate((train_images, tmp1))
             train_labels = np.append(train_labels, tmp2)
             model = build_model()
