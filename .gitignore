@@ -1,0 +1,5 @@
+src/tmp/clips/**
+src/tmp/videos/**
+!src/tmp/videos/.placeholder
+!src/tmp/clips/.placeholder
+__pycache__

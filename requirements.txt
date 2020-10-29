@@ -1,0 +1,14 @@
+tensorflow
+numpy
+matplotlib
+argparse
+sklearn
+pandas
+keras
+sklearn
+scikit-image
+tqdm
+opencv-python
+debugpy
+tensorflow-gpu
+wheel

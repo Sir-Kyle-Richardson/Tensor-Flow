@@ -8,7 +8,7 @@ except ModuleNotFoundError:
 
 
 def loadModeOption(argsMode):
-    if argsMode in["name", "name+", "series", "reset"]:
+    if argsMode in ["name", "name+", "series", "reset"]:
         return argsMode
     else:
         print("Wrong command option for mode")
@@ -34,13 +34,14 @@ def loadArgParameter(argParameter, mode):
     if argParameter != None:
         return argParameter
     else:
-        print(f"There is no enougth parameters for {mode} mode")
+        print(f"There is no enough parameters for {mode} mode")
         exit(1)
 
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description='Neural network for image recognition')
+    parser = argparse.ArgumentParser(
+        description='Neural network for image recognition')
     parser.add_argument("-m", "--mode", type=str,
                         help="mode for program run: 'name' or 'name+' or 'series' or 'reset'")
     parser.add_argument("-i", "--number", type=int,

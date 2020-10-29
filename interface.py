@@ -1,5 +1,5 @@
 try:
-    import sequentialModel as sm
+    import sequential_model as sm
     import tensorflow as tf
     import numpy as np
 except ModuleNotFoundError:
