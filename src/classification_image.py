@@ -1,3 +1,11 @@
+import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+import matplotlib.pyplot as plt
+from Pillow import Image
+import os
+
+
 class ClassificationImage:
     standardShape = 28
 
