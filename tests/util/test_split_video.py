@@ -2,9 +2,11 @@ import unittest
 from src.util.split_video import splitVideo
 import os
 
-class Test(unittest.TestCase):   
+currentPath = os.path.dirname(os.path.abspath(__file__))
+
+
+class Test(unittest.TestCase):
     def testSplitVideoIntoFrames(self):
-        currentPath = os.path.realpath(__file__)
-        videoPath = "../../src/"
-        result = splitVideo("howdy")
+        videoPath = currentPath + "/../mocks/mock.mp4"
+        result = splitVideo(videoPath)
         self.assertEqual(True, result)

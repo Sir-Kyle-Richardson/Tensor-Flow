@@ -1,19 +1,28 @@
+import math
 from tqdm import tqdm
-from glob import glob
-from sklearn.model_selection import train_test_split
-from skimage.transform import resize   # for resizing images
-from keras.utils import np_utils
-import numpy as np    # for mathematical operations
-from keras.preprocessing import image   # for preprocessing the images
-import pandas as pd
-import cv2     # for capturing videos
-import math   # for mathematical operations
-import matplotlib
-import matplotlib.pyplot as plt    # for plotting the images
+import cv2  # for capturing videos
+import os
+
+currentPath = os.path.dirname(os.path.abspath(__file__))
 
 # Splits video by frames into src/tmp folder
 def splitVideo(video):
-    try:
+    count = 0
+    cap = cv2.VideoCapture(video)
+    ret, frame = cap.read()
+    frameRate = math.floor(cap.get(5))
 
-    except Error: 
-        return False
+    while cap.isOpened():
+        frameId = cap.get(1)  # current frame number
+        ret, frame = cap.read()
+
+        if ret != True:
+            break
+
+        if frameId % frameRate == 0:
+            # storing the frames in a new folder named train_1
+            filename = currentPath + "/../tmp/frames/video_frame%d.jpg" % count
+            count += 1
+            cv2.imwrite(filename, frame)
+
+    return True

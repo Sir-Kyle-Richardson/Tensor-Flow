@@ -5,5 +5,5 @@
   "python.testing.pytestEnabled": true,
   "python.testing.pytestPath": "./.env/Lib/pytest",
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*test*.py"],
-  "python.formatting.provider": "autopep8"
+  "python.formatting.provider": "black"
 }
